@@ -1,5 +1,7 @@
 {
   "name": "komnot_het",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
