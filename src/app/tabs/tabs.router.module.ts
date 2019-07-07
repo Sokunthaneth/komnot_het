@@ -12,7 +12,25 @@ const routes: Routes = [
         children: [
           {
             path: '',
+            redirectTo: 'journals',
             loadChildren: '../tab1/tab1.module#Tab1PageModule'
+          },
+          {
+            path: 'journals',
+            children: [
+              {
+                path: '',
+                loadChildren: '../journal/journal.module#JournalPageModule'
+              },
+              {
+                path: 'detail',
+                loadChildren: '../journal/journal-details/journal-details.module#JournalDetailsPageModule'
+              },
+              {
+                path: 'detail/:id',
+                loadChildren: '../journal/journal-details/journal-details.module#JournalDetailsPageModule'
+              }
+            ]
           }
         ]
       },
@@ -36,14 +54,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/tab1/journals',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/tab1/journals',
     pathMatch: 'full'
   }
 ];

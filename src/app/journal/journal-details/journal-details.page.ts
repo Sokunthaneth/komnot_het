@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd, RouterEvent } from '@angular/router';
 import { NavController, LoadingController } from '@ionic/angular';
 import { JournalService } from './../../services/journal.service';
 import { JournalModel } from './../../models/journal.model';
@@ -22,8 +22,15 @@ export class JournalDetailsPage implements OnInit {
   };
  
   journalId = null;
+  defaultBackLink: string;
  
-  constructor(private route: ActivatedRoute, private nav: NavController, private journalService: JournalService, private loadingController: LoadingController) { }
+  constructor(private route: ActivatedRoute, private nav: NavController, private journalService: JournalService, private loadingController: LoadingController, private router: Router) { 
+    this.router.events.subscribe((event: RouterEvent) => {
+      if (event && event instanceof NavigationEnd && event.url) {
+        this.defaultBackLink = event.url.replace('/tabs/tab1/journals/', '');
+      }
+    });
+  }
  
   ngOnInit() {
     this.journalId = this.route.snapshot.params['id'];

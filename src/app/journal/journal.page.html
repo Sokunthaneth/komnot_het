@@ -21,7 +21,7 @@
     </ng-container>
   
     <ion-item-sliding *ngFor="let journal of journals">
-      <ion-item lines="inset" button [routerLink]="['/journals', journal.id]">
+      <ion-item lines="inset" button [routerLink]="['/tabs/tab1/journals/detail', journal.id]">
         <ion-label>
           {{ journal.title }}
           <p>{{ journal.content }}</p>
@@ -39,7 +39,7 @@
   </ion-list>
   
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button routerLink="/journals" routerDirection="forward">
+    <ion-fab-button routerLink="/tabs/tab1/journals/detail" routerDirection="forward">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

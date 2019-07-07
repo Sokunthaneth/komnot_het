@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: '',
     component: JournalPage
+  },
+  {
+    path: 'detail/:id',
+    loadChildren: './journal-details/journal-details.module#JournalDetailsPageModule'
   }
 ];
 
