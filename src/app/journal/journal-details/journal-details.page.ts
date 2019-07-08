@@ -12,7 +12,6 @@ import { JournalModel } from './../../models/journal.model';
 export class JournalDetailsPage implements OnInit {
  
   journal: JournalModel = {
-    id: '123',
     title: 'test',
     content: 'lorem ipsum libili...',
     imageUrl: 'kjhkjh',
@@ -37,6 +36,11 @@ export class JournalDetailsPage implements OnInit {
     if (this.journalId)  {
       this.loadJournal();
     }
+  }
+
+  removeJournal() {
+    this.journalService.removeJournal(this.journalId);
+    this.router.navigate(['/tabs/tab1/journals']);
   }
  
   async loadJournal() {

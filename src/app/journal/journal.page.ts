@@ -16,11 +16,7 @@ export class JournalPage implements OnInit {
   ngOnInit() {
     this.journalService.getJournals().subscribe(res => {
       this.journals = res;
-      console.log(res);
     });
   }
 
-  remove(journal) {
-    this.journalService.removeJournal(journal.id);
-  }
 }
