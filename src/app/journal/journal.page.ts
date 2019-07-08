@@ -18,5 +18,4 @@ export class JournalPage implements OnInit {
       this.journals = res;
     });
   }
-
 }
