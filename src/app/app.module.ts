@@ -19,6 +19,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import * as firebase from 'firebase';
+import { AuthenticationGuard } from './guard/authentication.guard';
  
 firebase.initializeApp(environment.firebase);
 
@@ -38,6 +39,7 @@ firebase.initializeApp(environment.firebase);
     StatusBar,
     SplashScreen,
     AuthenticationService,
+    AuthenticationGuard,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

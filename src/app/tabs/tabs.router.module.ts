@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { AuthenticationGuard } from '../guard/authentication.guard';
 
 const routes: Routes = [
   {
@@ -20,15 +21,18 @@ const routes: Routes = [
             children: [
               {
                 path: '',
-                loadChildren: '../journal/journal.module#JournalPageModule'
+                loadChildren: '../journal/journal.module#JournalPageModule', 
+                canActivate: [AuthenticationGuard]
               },
               {
                 path: 'detail',
-                loadChildren: '../journal/journal-details/journal-details.module#JournalDetailsPageModule'
+                loadChildren: '../journal/journal-details/journal-details.module#JournalDetailsPageModule', 
+                canActivate: [AuthenticationGuard]
               },
               {
                 path: 'detail/:id',
-                loadChildren: '../journal/journal-details/journal-details.module#JournalDetailsPageModule'
+                loadChildren: '../journal/journal-details/journal-details.module#JournalDetailsPageModule', 
+                canActivate: [AuthenticationGuard]
               }
             ]
           }

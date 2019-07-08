@@ -74,4 +74,32 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /** global font **/
+  --ion-font-family: 'SourceSans Pro - Regular';
+}
+
+@font-face {
+  font-family: 'SourceSans Pro - Regular';
+  font-weight: 300;
+  font-style: normal;
+  src: url('../assets/fonts/SourceSansPro/SourceSansPro-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'SourceSans Pro - Bold';
+  font-weight: 300;
+  font-style: normal;
+  src: url('../assets/fonts/SourceSansPro/SourceSansPro-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'SourceSans Pro - Itallic';
+  font-weight: 300;
+  font-style: normal;
+  src: url('../assets/fonts/SourceSansPro/SourceSansPro-Italic.ttf') format('truetype');
+}
+
+ion-card-title {
+  font-family: 'SourceSans Pro - Bold';
 }

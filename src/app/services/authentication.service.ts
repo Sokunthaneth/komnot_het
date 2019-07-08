@@ -1,10 +1,25 @@
 import { Injectable } from "@angular/core";
 import * as firebase from 'firebase/app';
+import { FirebaseAuth } from 'angularfire2';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { AngularFirestore } from 'angularfire2/firestore';
+import { Router } from '@angular/router';
  
 @Injectable()
 export class AuthenticationService {
  
-  constructor(){}
+  authState: boolean = null;
+
+  constructor(private af: AngularFireAuth, private db: AngularFirestore, private router: Router) {
+    af.auth.onAuthStateChanged((user) => {
+      this.authState = true;
+    });
+  }
+
+  // Return true if user is logged in
+  get authenticated(): boolean {
+    return this.authState !== null;
+  }
  
   registerUser(value){
    return new Promise<any>((resolve, reject) => {
