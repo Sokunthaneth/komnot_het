@@ -1,4 +1,8 @@
-.fake-skeleton {
+.fake-skeleton-40 {
+    width: 40%;
+}
+
+.fake-skeleton-60 {
     width: 60%;
 }
 
@@ -7,9 +11,10 @@
 }
 
 .journal {
-    margin-top: 25px;
+    margin-top: 20px;
 }
 
-img {
+ion-thumbnail {
+    width: 100%;
     height: 18rem;
 }

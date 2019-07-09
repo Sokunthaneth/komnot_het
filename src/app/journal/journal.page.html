@@ -10,39 +10,45 @@
 <ion-content>
   
   <ion-list>
-  
-    <ng-container *ngIf="!journals || journals.length == 0">
-      <div *ngFor="let n of [0,1,2,3]" padding>
-        <ion-skeleton-text></ion-skeleton-text>
-        <p>
-          <ion-skeleton-text class="fake-skeleton"></ion-skeleton-text>
-        </p>
+    <ion-grid *ngIf="!journals || journals.length == 0">
+      <div *ngFor="let n of [0,1]" padding>
+        <ion-row>
+          <ion-col size-md="6" offset-md="3">
+            <ion-card center class="journal">
+              <div>
+                <ion-card-header>
+                  <ion-thumbnail>
+                    <ion-skeleton-text animated></ion-skeleton-text>
+                  </ion-thumbnail>
+                  <ion-card-subtitle>
+                    <ion-skeleton-text animated class="fake-skeleton-40"></ion-skeleton-text>
+                  </ion-card-subtitle>
+                  <ion-card-title>
+                    <ion-skeleton-text animated class="fake-skeleton-60"></ion-skeleton-text>
+                  </ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                  <ion-skeleton-text animated></ion-skeleton-text>
+                  <ion-skeleton-text animated class="fake-skeleton-60"></ion-skeleton-text>
+                </ion-card-content>
+              </div>
+          </ion-card>
+          </ion-col>
+        </ion-row>
       </div>
-    </ng-container>
-  
-    <!-- <ion-item-sliding *ngFor="let journal of journals">
-      <ion-item lines="inset" button [routerLink]="['/tabs/tab1/journals/detail', journal.id]">
-        <ion-label>
-          {{ journal.title }}
-          <p>{{ journal.content }}</p>
-        </ion-label>
-      </ion-item>
-  
-      <ion-item-options side="end">
-        <ion-item-option (click)="remove(journal)" color="secondary">
-          Check
-          <ion-icon name="checkmark" slot="end"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding> -->
-    
+    </ion-grid>  
+
     <ion-grid>
       <ion-row>
         <ion-col size-md="6" offset-md="3">
           <ion-card center *ngFor="let journal of journals" class="journal">
-            <img src="./madison.jpg" />
             <div  [routerLink]="['/tabs/tab1/journals/detail', journal.id]" id="journal_content">
               <ion-card-header>
+                <ion-thumbnail>
+                  <img src="image" />
+                </ion-thumbnail>
                 <ion-card-subtitle>{{ journal.mood }}</ion-card-subtitle>
                 <ion-card-title>{{ journal.title }}</ion-card-title>
               </ion-card-header>
@@ -61,7 +67,5 @@
       </ion-fab-button>
     </ion-fab> 
   </ion-list>
-  
-
 
 </ion-content>
