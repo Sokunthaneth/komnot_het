@@ -17,5 +17,6 @@ export class JournalPage implements OnInit {
     this.journalService.getJournals().subscribe(res => {
       this.journals = res;
     });
+    console.log(this.journalService);
   }
 }

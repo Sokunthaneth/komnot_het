@@ -11,17 +11,11 @@ import { JournalModel } from './../../models/journal.model';
 })
 export class JournalDetailsPage implements OnInit {
  
-  journal: JournalModel = {
-    title: 'test',
-    content: 'lorem ipsum libili...',
-    imageUrl: 'kjhkjh',
-    mood: 'happy',
-    tag: ['reflection', 'milestone', 'life-decision'],
-    createdAt: new Date().getTime(),
-  };
+  journal: JournalModel;
  
   journalId = null;
   defaultBackLink: string;
+  newJournal: boolean = true;
  
   constructor(private route: ActivatedRoute, private nav: NavController, private journalService: JournalService, private loadingController: LoadingController, private router: Router) { 
     this.router.events.subscribe((event: RouterEvent) => {
@@ -34,6 +28,7 @@ export class JournalDetailsPage implements OnInit {
   ngOnInit() {
     this.journalId = this.route.snapshot.params['id'];
     if (this.journalId)  {
+      this.newJournal = false;
       this.loadJournal();
     }
   }

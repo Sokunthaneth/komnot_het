@@ -22,17 +22,17 @@ const routes: Routes = [
               {
                 path: '',
                 loadChildren: '../journal/journal.module#JournalPageModule', 
-                canActivate: [AuthenticationGuard]
+                // canActivate: [AuthenticationGuard]
               },
               {
                 path: 'detail',
                 loadChildren: '../journal/journal-details/journal-details.module#JournalDetailsPageModule', 
-                canActivate: [AuthenticationGuard]
+                // canActivate: [AuthenticationGuard]
               },
               {
                 path: 'detail/:id',
                 loadChildren: '../journal/journal-details/journal-details.module#JournalDetailsPageModule', 
-                canActivate: [AuthenticationGuard]
+                // canActivate: [AuthenticationGuard]
               }
             ]
           }
