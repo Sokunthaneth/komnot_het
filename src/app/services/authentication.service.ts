@@ -9,10 +9,12 @@ import { Router } from '@angular/router';
 export class AuthenticationService {
  
   authState: boolean = null;
+  userId: string;
 
   constructor(private af: AngularFireAuth, private db: AngularFirestore, private router: Router) {
     af.auth.onAuthStateChanged((user) => {
       this.authState = true;
+      this.userId = user.uid;
     });
   }
 

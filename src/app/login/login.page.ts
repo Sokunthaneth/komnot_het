@@ -14,11 +14,9 @@ export class LoginPage implements OnInit {
   errorMessage: string = '';
  
   constructor(
- 
     private navCtrl: NavController,
     private authService: AuthenticationService,
     private formBuilder: FormBuilder
- 
   ) { }
  
   ngOnInit() {
@@ -51,7 +49,7 @@ export class LoginPage implements OnInit {
   loginUser(value){
     this.authService.loginUser(value)
     .then(res => {
-      console.log(res);
+      // console.log(res);
       this.errorMessage = "";
       this.navCtrl.navigateForward('/');
     }, err => {

@@ -46,14 +46,14 @@
           <ion-card center *ngFor="let journal of journals" class="journal">
             <div  [routerLink]="['/tabs/tab1/journals/detail', journal?.id]" id="journal_content">
               <ion-card-header>
-                <ion-thumbnail>
+                <!-- <ion-thumbnail>
                   <img src="image" />
-                </ion-thumbnail>
-                <ion-card-subtitle>{{ journal?.mood }}</ion-card-subtitle>
-                <ion-card-title>{{ journal?.title }}</ion-card-title>
+                </ion-thumbnail> -->
+                <ion-card-subtitle>{{ journal.mood }}</ion-card-subtitle>
+                <ion-card-title>{{ journal.title }}</ion-card-title>
               </ion-card-header>
               <ion-card-content>
-                {{ journal?.content }}
+                {{ journal.content }}
               </ion-card-content>
             </div>
         </ion-card>

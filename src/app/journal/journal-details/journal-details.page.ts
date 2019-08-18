@@ -3,6 +3,7 @@ import { ActivatedRoute, Router, NavigationEnd, RouterEvent } from '@angular/rou
 import { NavController, LoadingController } from '@ionic/angular';
 import { JournalService } from './../../services/journal.service';
 import { JournalModel } from './../../models/journal.model';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-journal-details',
@@ -12,12 +13,29 @@ import { JournalModel } from './../../models/journal.model';
 export class JournalDetailsPage implements OnInit {
  
   journal: JournalModel;
- 
-  journalId = null;
+  journalId: string = null;
   defaultBackLink: string;
   newJournal: boolean = true;
  
-  constructor(private route: ActivatedRoute, private nav: NavController, private journalService: JournalService, private loadingController: LoadingController, private router: Router) { 
+  constructor(
+    private route: ActivatedRoute, 
+    private nav: NavController, 
+    private journalService: JournalService, 
+    private loadingController: LoadingController, 
+    private router: Router,
+    private authService: AuthenticationService
+  ) { 
+    this.journal = {
+      userId: '',
+      title: '',
+      content: '',
+      imageUrl: '',
+      mood: '',
+      quote: '',
+      tag: [],
+      createdAt: new Date(),
+    }
+    
     this.router.events.subscribe((event: RouterEvent) => {
       if (event && event instanceof NavigationEnd && event.url) {
         this.defaultBackLink = event.url.replace('/tabs/tab1/journals/', '');
@@ -63,6 +81,7 @@ export class JournalDetailsPage implements OnInit {
         this.nav.back();
       });
     } else {
+      this.journal.userId = this.authService.userId;
       this.journalService.addJournal(this.journal).then(() => {
         loading.dismiss();
         this.nav.back();

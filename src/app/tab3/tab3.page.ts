@@ -24,7 +24,7 @@ export class Tab3Page {
   logout(){
     this.authService.logoutUser()
     .then(res => {
-      console.log(res);
+      // console.log(res);
       this.navCtrl.navigateBack('/login');
     })
     .catch(error => {

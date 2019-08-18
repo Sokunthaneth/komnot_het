@@ -1,12 +1,12 @@
 import { Time } from '@angular/common';
 
 export interface JournalModel {
+    userId: string,
     title: string,
     content: string,
-    imageUrl: File[],
-    // imageUrl: string,
+    imageUrl: string,
     mood: string,
     quote: string,
     tag: string[],
-    createdAt: number,
+    createdAt: Date,
 }

@@ -17,30 +17,30 @@
     <ion-row>
       <ion-col>
         <ion-list size-md="10" offset-md="5">
-          <ion-item>
+          <!-- <ion-item>
             <ion-label>Photos</ion-label>
             <ion-input type="file" accept="image/*" (change)="changeListener($event)"></ion-input>
-            <!-- <ion-input type="text" placeholder="A few words to describe your thoughts..." [ngModel]="journal?.imageUrl" autofocus></ion-input> -->
-          </ion-item>
+            <ion-input type="text" placeholder="A few words to describe your thoughts..." [(ngModel)]="journal?.imageUrl" autofocus></ion-input>
+          </ion-item> -->
           <ion-item>
             <ion-label>Quote</ion-label>
-            <ion-input type="text" placeholder="A few words to describe your thoughts..." [ngModel]="journal?.quote" autofocus></ion-input>
+            <ion-input type="text" placeholder="A few words to describe your thoughts..." [ngModel]="journal?.quote" (ngModelChange)="journal.quote=$event" autofocus></ion-input>
           </ion-item>
           <ion-item>
             <ion-label>Title</ion-label>
-            <ion-input required type="text" placeholder="Give your thought a title..." [ngModel]="journal?.title"></ion-input>
+            <ion-input required type="text" placeholder="Give your thought a title..." [ngModel]="journal?.title" (ngModelChange)="journal.title=$event"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label>Content</ion-label>
-            <ion-textarea required type="text" placeholder="Turn your thoughts into words here..." [ngModel]="journal?.content"></ion-textarea>
+            <ion-textarea required type="text" placeholder="Turn your thoughts into words here..." [ngModel]="journal?.content" (ngModelChange)="journal.content=$event"></ion-textarea>
           </ion-item>
           <ion-item>
             <ion-label>Tag</ion-label>
-            <ion-input type="text" placeholder="Seperate tags by comma..." [ngModel]="journal?.tag"></ion-input>
+            <ion-input type="text" placeholder="Seperate tags by comma..." [ngModel]="journal?.tag" (ngModelChange)="journal.tag=$event"></ion-input>
           </ion-item>
           <ion-item>
             <ion-label>Mood</ion-label>
-            <ion-input type="text" placeholder="Select your mood below..." [ngModel]="journal?.mood"></ion-input>
+            <ion-input type="text" placeholder="Select your mood below..." [ngModel]="journal?.mood" (ngModelChange)="journal.mood=$event"></ion-input>
           </ion-item>
         </ion-list>
         <ion-button expand="full" (click)="saveJournal()">Save</ion-button>

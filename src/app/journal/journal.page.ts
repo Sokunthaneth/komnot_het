@@ -11,12 +11,13 @@ export class JournalPage implements OnInit {
 
   journals: JournalModel[];
 
-  constructor(private journalService: JournalService) { }
+  constructor(
+    private journalService: JournalService
+  ) { }
 
   ngOnInit() {
     this.journalService.getJournals().subscribe(res => {
       this.journals = res;
     });
-    console.log(this.journalService);
   }
 }

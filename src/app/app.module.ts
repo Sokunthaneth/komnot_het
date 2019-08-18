@@ -17,6 +17,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AuthenticationService } from './services/authentication.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import * as firebase from 'firebase';
 import { AuthenticationGuard } from './guard/authentication.guard';
@@ -29,6 +30,7 @@ firebase.initializeApp(environment.firebase);
   imports: [BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
+    FormsModule,
     IonicStorageModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,

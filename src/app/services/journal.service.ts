@@ -3,6 +3,7 @@ import { JournalModel } from '../models/journal.model';
 import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,15 @@ import { map } from 'rxjs/operators';
 export class JournalService {
 
   private journals: Observable<JournalModel[]>;
-  private journalCollection: AngularFirestoreCollection<JournalModel>; 
+  private journalCollection: AngularFirestoreCollection<JournalModel>;
+  private userId: string;
 
-  constructor(private fireStore: AngularFirestore) { 
-    this.journalCollection = fireStore.collection<JournalModel>('journal');
+  constructor(
+    private fireStore: AngularFirestore,
+    private authService: AuthenticationService
+  ) {
+    this.userId = authService.userId;
+    this.journalCollection = fireStore.collection<JournalModel>('journal', ref => ref.where("userId", "==", this.userId));
 
     this.journals = this.journalCollection.snapshotChanges().pipe(
       map(actions => {
