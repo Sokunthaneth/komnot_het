@@ -19,7 +19,7 @@ export class JournalService {
     private authService: AuthenticationService
   ) {
     this.userId = authService.userId;
-    this.journalCollection = fireStore.collection<JournalModel>('journal', ref => ref.where("userId", "==", this.userId));
+    this.journalCollection = fireStore.collection<JournalModel>('journals', ref => ref.where("userId", "==", this.userId));
 
     this.journals = this.journalCollection.snapshotChanges().pipe(
       map(actions => {
@@ -31,6 +31,22 @@ export class JournalService {
       })
     );
   }
+
+  // ionViewWillEnter() {
+  //   console.log(this.authService.userId);
+  //   this.userId = this.authService.userId;
+  //   this.journalCollection = this.fireStore.collection<JournalModel>('journals', ref => ref.where("userId", "==", this.userId));
+
+  //   this.journals = this.journalCollection.snapshotChanges().pipe(
+  //     map(actions => {
+  //       return actions.map(a => {
+  //         const data = a.payload.doc.data();
+  //         const id = a.payload.doc.id;
+  //         return { id, ...data };
+  //       });
+  //     })
+  //   );
+  // }
 
   getJournals() {
     return this.journals;
